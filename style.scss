@@ -1,0 +1,98 @@
+@mixin box-shadow($property) {
+    -webkit-box-shadow: $property;
+    -moz-box-shadow: $property;
+    box-shadow: $property;
+}
+$blue: 8px;
+$red: 16px;
+%alerts {
+        border: 1px solid #ccc;
+        padding: $blue;
+        color: #2748B3;
+        width: 100%
+}
+/* start of css*/
+
+body {
+    font: 100% "Space Mono", monospace;
+    color: #2748B3;
+    margin: 0px;
+    padding: $blue;
+    background-color: #000;
+    background-image: radial-gradient(#fff, rgba(255, 255, 255, 0.2) 2px, transparent 40px), radial-gradient(#fff, rgba(255, 255, 255, 0.15) 1px, transparent 30px), radial-gradient(#fff, rgba(255, 255, 255, 0.1) 2px, transparent 40px), radial-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1) 2px, transparent 30px);
+    background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
+    background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+    background-attachment: fixed
+}
+article {
+    display: flex;
+    flex-wrap: wrap;
+    section {
+        flex-grow: 1;
+        flex-basis: 45%;
+        border: 1px silver solid;
+        @include box-shadow(10px 10px 19px -4px rgba(255, 255, 255, 0.75));
+        padding: $blue;
+        margin: 16px;
+        clear: both;
+        overflow: auto;
+        box-sizing: border-box;
+    }
+    section#selling-points {
+            flex-grow: 2;
+            flex-basis: 100%
+    }
+    
+    code {
+        background: #000;
+        border: 1px solid #ddd;
+        color: #666;
+        page-break-inside: avoid;
+        font-family: monospace;
+        font-size: 15px;
+        line-height: 1.6;
+        margin-bottom: 1.6em;
+        max-width: 100%;
+        overflow: auto;
+        padding: $blue;
+        display: block;
+        word-wrap: break-word;
+    }    
+    code.before {
+            float: left;
+            width: 40%
+    }
+    code.after {
+            float: right;
+            width: 40%
+    }
+}
+h1,
+h2,
+h6 {
+    color: #6B8EFF
+}
+h1 {
+    text-align: center
+}
+
+h6 {
+    text-align: center;
+    font-size: 2em;
+    padding: $blue * 2;
+    margin-bottom: 0px
+}
+
+.message,
+.success {
+    background-color: green;
+    @extend %alerts;
+}
+.error {
+    background-color: red;
+    @extend %alerts;
+}
+.warning {
+    @extend %alerts;
+    background-color: orange
+}
